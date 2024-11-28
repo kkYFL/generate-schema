@@ -1,11 +1,11 @@
 {
-  "name": "generate-schema",
-  "version": "2.6.0",
-  "author": "Nijiko Yonskai <nijikokun@gmail.com>",
+  "name": "2d-generate-schema",
+  "version": "1.0.0",
+  "author": "2dfire.mistong.com",
   "description": "Effortlessly convert your JSON Object to JSON Schema, Mongoose Schema, or a Generic template for quick documentation / upstart.",
   "license": "MIT",
   "repository": "Nijikokun/generate-schema",
-  "homepage": "https://github.com/Nijikokun/generate-schema",
+  "homepage": "https://github.com/kkYFL/generate-schema/tree/2d_branch",
   "main": "src/index.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha"

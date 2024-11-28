@@ -137,6 +137,7 @@ function processObject(object, output, nested) {
   if (nested && output) {
     output = { properties: output }
   } else {
+    // 初始output赋值
     output = output || {}
     output.type = getPropertyType(object)
     output.properties = output.properties || {}
@@ -144,17 +145,20 @@ function processObject(object, output, nested) {
   }
 
   for (var key in object) {
+    // 字段 value值
     var value = object[key]
     var type = getPropertyType(value)
     var format = getPropertyFormat(value)
 
     type = type === 'undefined' ? 'null' : type
 
+    // 对象递归处理
     if (type === 'object') {
       output.properties[key] = processObject(value, output.properties[key])
       continue
     }
 
+    // 对象递归处理
     if (type === 'array') {
       output.properties[key] = processArray(value, output.properties[key])
       continue
@@ -184,6 +188,11 @@ function processObject(object, output, nested) {
     output.properties[key] = {}
     output.properties[key].type = type
 
+    // 分析数据结构-常规类型添加Mock
+    if (type !== 'object' && type !== 'array' && value) {
+      output.properties[key].mock = { "mock": value || undefined }
+    }
+    
     if (format) {
       output.properties[key].format = format
     }
